@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+
+.footer{
+    background-color: #003F1D;
+    margin: -8px;
+    display: flex;
+    color: white;
+
+    img{
+        height: 190px;
+        margin-top: 5px;
+        margin-right: 100px;
+    }
+
+    .text-container{
+        text-align: center;
+        
+
+        .title{
+            font-family: "Monomaniac One", sans-serif;
+            font-size: 50px;
+            margin-bottom: -20px;
+        }
+
+        .parrafo{
+            font-family: "Monomaniac One", sans-serif;
+            font-size: 26px;
+
+        }
+    }
+
+    @media (max-width: 750px) {
+        
+        img{
+            display: none;
+        }
+
+        .text-container{
+            margin-left: 10%;
+
+            .title{
+                font-size: 35px;
+            }
+
+            .parrafo{
+                font-size: 16px
+            }
+        }
+          
+      }
+}
