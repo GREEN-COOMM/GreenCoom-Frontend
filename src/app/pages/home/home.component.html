@@ -1,0 +1,60 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
+
+<div class="inicio-container">
+    <h1 class="centered-text">EL AMOR POR LA NATURALEZA ES EL PRIMER PASO HACIA SU PROTECCIÓN</h1>
+</div>
+
+<!-- Nuevo contenedor debajo de home-container -->
+<div class="home-container">
+    <div class="left-container">
+        <div class="button-container">
+            <button class="create-post-button">Crear Publicación</button>
+        </div>
+        <div class="publications-title">
+            PUBLICACIONES
+        </div>
+
+        <div class="publicacion-container" *ngFor="let publicacion of publicaciones">
+            <div class="publicacion-texto">
+                <h2 class="publicacion-titulo">{{ publicacion.titulo }}</h2>
+                <p class="publicacion-descripcion">{{ publicacion.descripcion }}</p>
+                <div class="publicacion-footer">
+                    <span class="publicacion-autor">{{ publicacion.autor }}</span>
+                    <span class="publicacion-fecha">{{ publicacion.fecha | date: 'dd/MM/yyyy' }} - {{ publicacion.hora }}</span>
+                </div>
+            </div>
+            <div class="divisor"></div> <!-- Divisor entre texto e imagen -->
+            <div class="publicacion-imagen">
+                <img src="{{ publicacion.imagen }}" alt="Imagen de la publicación">
+            </div>
+        </div>
+        
+    </div>
+    <div class="right-container">
+        <div class="button-container-eve">
+            <button class="create-post-button-eve">Crear Evento</button>
+        </div>
+        <div class="eventos-title">
+            EVENTOS
+        </div>
+
+        <div class="evento-container" *ngFor="let evento of eventos">
+            <div class="evento-texto">
+                <h2 class="evento-titulo">{{ evento.titulo }}</h2>
+                <p class="evento-descripcion">{{ evento.descripcion }}</p>
+                <div class="evento-footer">
+                    <div class="evento-fecha-hora">
+                        <span>Fecha: {{ evento.fecha | date: 'dd/MM/yyyy' }}</span>
+                        <span>Hora: {{ evento.hora }}</span>
+                    </div>
+
+                    <div class="divider"></div>
+                    <a class="evento-link" href="{{ evento.link }}" target="_blank">Link para unirse</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

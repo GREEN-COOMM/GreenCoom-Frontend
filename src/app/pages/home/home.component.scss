@@ -1,0 +1,333 @@
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; // Asegura que el html y body ocupen todo el ancho
+    height: 100%; // Opcional: para ocupar toda la altura disponible
+}
+
+
+.inicio-container {
+    position: relative;
+    height: 300px;
+    margin: -10px;
+    background-image: url('/assets/home/inicio.jpg');
+    background-position: center; 
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .centered-text {
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 3vw; // Tamaño de fuente relativo al ancho de la ventana
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        margin: 100px; // Elimina el margen para que no afecte en tamaños pequeños
+        padding: 10px; // Añade algo de padding para manejar los textos en pequeñas resoluciones
+
+        @media (max-width: 768px) {
+            font-size: 5vw; // Tamaño de fuente más grande en pantallas pequeñas
+        }
+
+        @media (max-width: 480px) {
+            font-size: 6vw; // Aún más grande en pantallas muy pequeñas
+        }
+    }
+
+    
+  }
+
+  .home-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0; // Solo padding vertical, sin padding horizontal
+    margin:-15px -6px ;
+    height: auto;
+    min-width: 102%;
+    box-sizing: border-box; // Asegura que el padding no añada al ancho total
+
+    .left-container, .right-container {
+        padding: 0px;
+        box-sizing: border-box; // Igualmente, asegura que el padding no afecte el ancho calculado
+    }
+
+    .left-container {
+        flex: 3; // Proporción ajustada para ocupar más espacio
+        background-color: rgba(255, 255, 255, 0.5);
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 50px; // Ajusta según necesidad
+        }
+        
+        .create-post-button {
+            background-color: #007234; // Color de fondo del botón
+            color: white; // Color de la letra
+            border: 2px solid black; // Borde negro
+            padding: 5px 70px; // Padding horizontal y vertical
+            font-size: 35px; // Tamaño de la letra
+            font-family: 'Monomaniac One', sans-serif; // Asegúrate de que 'Monomaniac One' se carga correctamente
+            border-radius: 15px; // Borde redondeado
+            cursor: pointer; // Cambia el cursor a una mano cuando se pasa sobre el botón
+            transition: background-color 0.3s, color 0.3s; // Transición suave del color de fondo y de la letra
+
+            &:hover {
+                background-color: white; // Color de fondo al pasar el cursor
+                color: black; // Color de la letra al pasar el cursor
+            }
+
+            @media (max-width: 768px) {
+                font-size: 14px; // Más pequeño para dispositivos más pequeños
+                padding: 8px 15px; // Padding más pequeño para dispositivos más pequeños
+            }
+        }
+
+        .publications-title {
+            font-family: 'Monomaniac One', sans-serif; // Usa la fuente Monomaniac One
+            color: green; // Establece el color del texto a verde
+            text-align: center; // Centra el texto horizontalmente
+            font-size: 3vw; // Tamaño de fuente responsivo basado en el ancho de la ventana
+            margin-top: 25px; // Espacio después del botón
+        
+            @media (max-width: 768px) {
+                font-size: 4vw; // Tamaño de fuente más grande para pantallas más pequeñas
+            }
+        
+            @media (max-width: 480px) {
+                font-size: 5vw; // Tamaño de fuente aún más grande para pantallas muy pequeñas
+            }
+        }
+
+
+        .publicacion-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; // Asegura que el divisor se estire para llenar el contenedor verticalmente
+            background-color: white; // Fondo blanco
+            border-radius: 10px; // Bordes redondeados
+            border: 2px solid rgb(207, 207, 207); // Borde gris sólido
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.5); // Iluminación suave ploma
+            width: 70%; // Ancho relativo para responsividad, reducido del 80% original
+            max-width: 600x; // Ancho máximo reducido para evitar que sea demasiado grande en pantallas grandes
+            margin: 20px auto; // Centra el contenedor horizontalmente y agrega margen vertical
+            padding: 20px; // Espacio interior
+            box-sizing: border-box; // Incluye el padding y el borde dentro del ancho y altura definidos
+            margin-bottom: 50px;
+        
+            @media (max-width: 768px) {
+                width: 70%; // Más ancho en pantallas más pequeñas, ajustado del 90% original
+            }
+        
+            @media (max-width: 480px) {
+                width: 80%; // Aún más ancho en pantallas muy pequeñas, ajustado del 95% original
+                padding: 10px; // Padding reducido para pantallas pequeñas
+            }
+
+            .divisor {
+                width: 2px; // Ancho de la línea divisoria
+                background-color: #ccc; // Color de la línea
+                margin: 0 10px; // Espacio horizontal para separar texto e imagen
+            }
+
+            .publicacion-texto {
+                padding: 20px;
+                flex: 1; // Ocupa el espacio necesario para el texto
+                display: flex;
+                flex-direction: column;
+                justify-content: center; // Centra verticalmente todos los elementos dentro de publicacion-texto
+                text-align: center; // Centra horizontalmente el texto
+        
+                .publicacion-titulo {
+                    font-family: 'Monomaniac One', sans-serif;
+                    color: #004d40; // Un tono de verde oscuro
+                    margin-bottom: 10px;
+                    font-size: 25px;
+                }
+        
+                .publicacion-descripcion {
+                    font-family: 'Adamina', serif;
+                    color: gray;
+                    flex-grow: 1;
+                    margin-bottom: 40px;
+                    font-size: 18px;
+                }
+        
+                .publicacion-footer {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 15px;
+                    color: #666;
+                }
+            }
+        
+            .publicacion-imagen {
+                width: 40%;
+                display: flex;
+                justify-content: center; // Centra la imagen horizontalmente
+                align-items: center; // Centra la imagen verticalmente
+        
+                img {
+                    width: 100%; // Ajusta esto según la necesidad para que las imágenes sean responsivas
+                    height: auto; // Mantiene la proporción de la imagen
+                    display: block;
+                }
+            }
+        }
+        
+    }
+
+
+
+
+
+  
+    .right-container {
+        flex: 2; // Proporción ajustada para ocupar menos espacio
+        background-color: #003F1D;
+
+        .button-container-eve {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 50px; // Ajusta según necesidad
+        }
+        
+        .create-post-button-eve {
+            background-color: #ffffff; // Color de fondo del botón
+            color: #007234;
+            border: 2px solid #007234;
+            padding: 5px 70px; // Padding horizontal y vertical
+            font-size: 35px; // Tamaño de la letra
+            font-family: 'Monomaniac One', sans-serif; // Asegúrate de que 'Monomaniac One' se carga correctamente
+            border-radius: 15px; // Borde redondeado
+            cursor: pointer; // Cambia el cursor a una mano cuando se pasa sobre el botón
+            transition: background-color 0.3s, color 0.3s; // Transición suave del color de fondo y de la letra
+
+            &:hover {
+                background-color: rgb(227, 246, 224); // Color de fondo al pasar el cursor
+                color: black; // Color de la letra al pasar el cursor
+            }
+
+            @media (max-width: 768px) {
+                font-size: 14px; // Más pequeño para dispositivos más pequeños
+                padding: 8px 15px; // Padding más pequeño para dispositivos más pequeños
+            }
+        }
+
+        .eventos-title {
+            font-family: 'Monomaniac One', sans-serif; // Usa la fuente Monomaniac One
+            color: rgb(255, 255, 255); // Establece el color del texto a verde
+            text-align: center; // Centra el texto horizontalmente
+            font-size: 3vw; // Tamaño de fuente responsivo basado en el ancho de la ventana
+            margin-top: 25px; // Espacio después del botón
+        
+            @media (max-width: 768px) {
+                font-size: 4vw; // Tamaño de fuente más grande para pantallas más pequeñas
+            }
+        
+            @media (max-width: 480px) {
+                font-size: 5vw; // Tamaño de fuente aún más grande para pantallas muy pequeñas
+            }
+        }
+
+
+        .evento-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; // Asegura que el divisor se estire para llenar el contenedor verticalmente
+            background-color: white; // Fondo blanco
+            border-radius: 10px; // Bordes redondeados
+            border: 2px solid rgb(207, 207, 207); // Borde gris sólido
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.5); // Iluminación suave ploma
+            width: 60%; // Ancho relativo para responsividad, reducido del 80% original
+            max-width: 600x; // Ancho máximo reducido para evitar que sea demasiado grande en pantallas grandes
+            margin: 20px auto; // Centra el contenedor horizontalmente y agrega margen vertical
+            padding: 20px; // Espacio interior
+            box-sizing: border-box; // Incluye el padding y el borde dentro del ancho y altura definidos
+            margin-bottom: 40px;
+        
+            @media (max-width: 768px) {
+                width: 70%; // Más ancho en pantallas más pequeñas, ajustado del 90% original
+            }
+        
+            @media (max-width: 480px) {
+                width: 80%; // Aún más ancho en pantallas muy pequeñas, ajustado del 95% original
+                padding: 10px; // Padding reducido para pantallas pequeñas
+            }
+
+            .divisor {
+                width: 2px; // Ancho de la línea divisoria
+                background-color: #ccc; // Color de la línea
+                margin: 0 10px; // Espacio horizontal para separar texto e imagen
+            }
+
+            .evento-texto {
+                padding: 20px;
+                flex: 1; // Ocupa el espacio necesario para el texto
+                display: flex;
+                flex-direction: column;
+                justify-content: center; // Centra verticalmente todos los elementos dentro de publicacion-texto
+                text-align: center; // Centra horizontalmente el texto
+        
+                .evento-titulo {
+                    font-family: 'Monomaniac One', sans-serif;
+                    color: #004d40; // Un tono de verde oscuro
+                    margin-bottom: 10px;
+                }
+        
+                .evento-descripcion {
+                    font-family: 'Adamina', serif;
+                    color: gray;
+                    flex-grow: 1;
+                    margin-bottom: 40px;
+                }
+        
+                .evento-footer {
+                    .evento-fecha-hora {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                               
+                        span {
+                            
+                            background-color: #ffffff;
+                            padding: 8px 5px;
+                            border-radius: 5px;
+                            border: 1px solid #007234;
+                          
+                        }
+                        margin-bottom: 30px;
+                    }
+
+                    .divider {
+                        height: 1px;
+                        background-color: #949494;
+                        margin: 6px 0; // Ajusta el espacio vertical alrededor del divisor
+                        margin-bottom: 20px;
+                    }
+        
+                    .evento-link {
+                        color: #003c7b;
+                        text-decoration: none;
+                        font-size: 16px;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }}
+            }
+        
+            
+        }
+
+        
+
+        
+    }
+
+  }

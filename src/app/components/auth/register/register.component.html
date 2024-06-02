@@ -1,0 +1,33 @@
+<div class="register-container">
+    <div class="option-2">
+        <img src="assets/Logo-3.png" alt="logo">
+        <div class="text">
+            <p>¿Ya tienes una cuenta?</p>
+            <button routerLink="/auth/login" class="login">Ingresar</button>
+        </div>
+    </div>
+    <div class="campos">
+        <h2>REGÍSTRATE</h2>
+        <form [formGroup]="forms" (ngSubmit)="onRegister()">
+            <div class="input-group">
+                <input type="text" placeholder="Nombre" formControlName="nombre">
+                <small *ngIf="nombreNoValido">*Este campos es obligatorio</small>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Correo" formControlName="email">
+                <small *ngIf="correoNoValido">*Ingrese un correo válido, debe incluir un &#64; y un dominio - ejemplo: nombredeusuario&#64;dominio.com</small>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Contraseña" formControlName="password">
+                <small *ngIf="contrasenaNoValido">*Ingrese una contraseña de mínimo 8 caracteres, incluir numeros, mayusculas y minúsculas</small>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Confirmar contraseña" formControlName="confirmarContrasena">
+                <small *ngIf="forms.errors?.['noCoinciden'] && forms.get('confirmarContrasena')?.touched">Las contraseñas no coinciden</small>
+            </div>
+            <div class="actions">
+                <button type="submit" class="register-button" [disabled]="!forms.valid" [class.btn-disabled]="!forms.valid" [class.btn-enabled]="forms.valid">REGÍSTRATE</button>
+            </div>
+        </form>
+    </div>
+</div>

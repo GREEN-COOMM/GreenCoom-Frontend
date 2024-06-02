@@ -1,0 +1,8 @@
+<div class="auth-container">
+    <div [class.hidden] = "!showLogin" class="form-container" >
+        <app-login (toggle)="toggleForm()"></app-login>
+    </div>
+    <div [class.hidden] = "showLogin" class="form-container" >
+        <app-register (toggle)="toggleForm()"></app-register>
+    </div>
+</div>

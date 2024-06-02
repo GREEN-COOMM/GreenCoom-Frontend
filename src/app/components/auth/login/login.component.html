@@ -1,0 +1,25 @@
+<div class="login-container">
+    <div class="campos">
+        <h2>INICIA SESIÓN</h2>
+        <form (submit)="onLogin()">
+            <div class="input-group">
+              <input type="text" placeholder="Usuario" required>
+            </div>
+            <div class="input-group">
+              <input type="password" placeholder="Contraseña" required>
+            </div>
+            <div class="actions">
+              <button type="submit" class="login-button">INICIA SESIÓN</button>
+              <a class="forgot-password">¿Has olvidado tu contraseña?</a>
+            </div>
+          </form>
+    </div>
+    <div class="option-2">
+        <img src="assets/Logo-3.png" alt="logo">
+        <div class="text">
+            <p class="primera">¿Aun no tienes una cuenta?</p>
+            <p class="segunda">Crea una cuenta ahora!!!</p>
+            <button routerLink="/auth/register" class="register" (click)="toggle.emit()">Registrate</button>
+        </div>
+    </div>
+</div>
