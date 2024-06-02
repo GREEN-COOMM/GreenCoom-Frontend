@@ -4,6 +4,7 @@ import { LoginComponent } from "../../components/auth/login/login.component";
 import { RegisterComponent } from '../../components/auth/register/register.component';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
     selector: 'app-auth',
     standalone: true,
