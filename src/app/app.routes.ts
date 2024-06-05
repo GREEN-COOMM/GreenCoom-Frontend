@@ -11,5 +11,5 @@ export const routes: Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'auth/login', component: AuthComponent},
     {path: 'auth/register', component: AuthComponent},
-    { path: 'pages/home', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
 ];

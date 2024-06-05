@@ -17,7 +17,6 @@ export class AuthService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
-      responseType: 'text'
     });
   }
 }
