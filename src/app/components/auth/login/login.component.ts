@@ -25,12 +25,17 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
         console.log(response);
+        localStorage.setItem('token', response.token);
+        alert("Usuario Iniciado Correctamente");
         this.redirectUser();
-        
+        console.log(localStorage.getItem('token'))
+        console.log("Hasta aca todo good")
         
       },
       error: (error) => {
         console.log(error.error);
+        console.error('Error en el inicio de sesión', error);
+        alert("Error en el inicio de sesión");
       }
     });
   }

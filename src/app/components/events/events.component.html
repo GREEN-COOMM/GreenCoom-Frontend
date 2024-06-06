@@ -1,0 +1,55 @@
+<div class="event-container">
+    <h2>NUEVO EVENTO</h2>
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <!-- Título -->
+      <div class="input-group">
+        <label>Título:</label>
+        <input type="text" placeholder="Título" formControlName="titulo">
+        <div *ngIf="eventForm.get('titulo')?.errors?.['required'] && eventForm.get('titulo')?.touched">
+          <small>El título es obligatorio y no debe exceder los 100 caracteres.</small>
+        </div>
+      </div>
+  
+      <!-- Descripción -->
+      <div class="input-group">
+        <label>Descripción:</label>
+        <textarea placeholder="Descripción" formControlName="descripcion"></textarea>
+        <div *ngIf="eventForm.get('descripcion')?.errors?.['required'] && eventForm.get('descripcion')?.touched">
+          <small>La descripción es obligatoria y no debe exceder los 500 caracteres.</small>
+        </div>
+      </div>
+  
+      <!-- Fecha -->
+      <div class="input-group">
+        <label>Fecha:</label>
+        <input type="date" formControlName="fecha">
+        <div *ngIf="eventForm.get('fecha')?.errors?.['required'] && eventForm.get('fecha')?.touched">
+          <small>La fecha es obligatoria.</small>
+        </div>
+      </div>
+  
+      <!-- Hora -->
+      <div class="input-group">
+        <label>Hora:</label>
+        <input type="time" formControlName="hora">
+        <div *ngIf="eventForm.get('hora')?.errors?.['required'] && eventForm.get('hora')?.touched">
+          <small>La hora es obligatoria.</small>
+        </div>
+      </div>
+  
+      <!-- Link -->
+      <div class="input-group">
+        <label>Link:</label>
+        <input type="url" placeholder="https://example.com" formControlName="link">
+        <div *ngIf="eventForm.get('link')?.errors?.['required'] && eventForm.get('link')?.touched">
+          <small>El link es obligatorio.</small>
+        </div>
+        <div *ngIf="eventForm.get('link')?.errors?.['pattern'] && eventForm.get('link')?.touched">
+          <small>El link debe ser una URL válida.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="!eventForm.valid">Publicar</button>
+    </form>
+  </div>
+  

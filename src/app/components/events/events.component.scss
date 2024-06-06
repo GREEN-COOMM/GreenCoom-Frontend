@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
 
-
-.publication-container {
+.event-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -51,57 +50,5 @@
         background-color: #ccc;
       }
     }
-  
-    
   }
-  
-  
-  
-  .file-upload {
-    position: relative;
-    display: flex; // Cambio para usar flex y centrar fácilmente
-    justify-content: center; // Centrar horizontalmente
-    align-items: center; // Centrar verticalmente
-    width: 100%; // Asumiendo que quieres que ocupe todo el ancho disponible
-  }
-  
-  .file-upload input[type="file"] {
-    display: none; // Ocultar el input original
-  }
-  
-  .file-upload-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; // Centrar el contenido del botón
-    cursor: pointer;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px; // Aumentar el padding para dar más espacio alrededor del texto y la imagen
-    width: 50%; // Ajusta según lo que necesites
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: #e0e0e0;
-    }
-  
-    img {
-      width: 40px; // Aumentar tamaño de la imagen
-      height: 40px; // Mantener la proporción de la imagen
-      margin-right: 10px; // Espacio entre la imagen y el texto
-    }
-  
-    span {
-      font-size: 16px; // Aumentar el tamaño de la fuente si es necesario
-    }
-  }
-  
-  .image-preview {
-    max-width: 200px; /* Ajustar según el tamaño deseado */
-    max-height: 200px;
-    width: auto;
-    height: auto;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-  }
-  
   

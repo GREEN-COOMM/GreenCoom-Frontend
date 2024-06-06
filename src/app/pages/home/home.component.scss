@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
 
 html, body {
     margin: 0;
@@ -6,6 +6,8 @@ html, body {
     width: 100%; // Asegura que el html y body ocupen todo el ancho
     height: 100%; // Opcional: para ocupar toda la altura disponible
 }
+
+
 
 
 .inicio-container {
@@ -66,30 +68,34 @@ html, body {
             margin-top: 50px; // Ajusta según necesidad
         }
         
-        .create-post-button {
+        .crear-btn-publi {
+            font-family: "Monomaniac One", sans-serif;
             background-color: #007234; // Color de fondo del botón
             color: white; // Color de la letra
-            border: 2px solid black; // Borde negro
-            padding: 5px 70px; // Padding horizontal y vertical
-            font-size: 35px; // Tamaño de la letra
-            font-family: 'Monomaniac One', sans-serif; // Asegúrate de que 'Monomaniac One' se carga correctamente
-            border-radius: 15px; // Borde redondeado
-            cursor: pointer; // Cambia el cursor a una mano cuando se pasa sobre el botón
-            transition: background-color 0.3s, color 0.3s; // Transición suave del color de fondo y de la letra
-
+            border: 2px solid transparent; // Borde transparente para mantener el tamaño constante
+            padding: 15px 70px; // Padding horizontal y vertical
+            font-size: 25px; // Tamaño de la letra adecuado
+            font-family: 'Monomaniac One', sans-serif; // Fuente estilizada
+            border-radius: 20px; // Bordes redondeados
+            cursor: pointer; // Cursor tipo mano para indicar clickeabilidad
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; // Transición suave para interacción
+        
             &:hover {
-                background-color: white; // Color de fondo al pasar el cursor
-                color: black; // Color de la letra al pasar el cursor
+                background-color: white; // Cambio de color de fondo al pasar el ratón
+                color: #007234; // Cambio de color de texto al pasar el ratón
+                border: 2px solid #007234; // Borde verde visible en hover
             }
-
-            @media (max-width: 768px) {
-                font-size: 14px; // Más pequeño para dispositivos más pequeños
-                padding: 8px 15px; // Padding más pequeño para dispositivos más pequeños
+        }
+        
+        @media (max-width: 768px) {
+            .crear-btn-publi {
+                font-size: 16px; // Tamaño de letra más pequeño en dispositivos móviles
+                padding: 8px 20px; // Menor padding en dispositivos móviles
             }
         }
 
         .publications-title {
-            font-family: 'Monomaniac One', sans-serif; // Usa la fuente Monomaniac One
+            font-family: 'Monomaniac One', 'sans-serif'; // Usa la fuente Monomaniac One
             color: green; // Establece el color del texto a verde
             text-align: center; // Centra el texto horizontalmente
             font-size: 3vw; // Tamaño de fuente responsivo basado en el ancho de la ventana
@@ -182,43 +188,44 @@ html, body {
         
     }
 
-
-
-
-
   
     .right-container {
         flex: 2; // Proporción ajustada para ocupar menos espacio
         background-color: #003F1D;
 
         .button-container-eve {
+            font-family: "Monomaniac One", sans-serif;
             display: flex;
             justify-content: center;
             width: 100%;
             margin-top: 50px; // Ajusta según necesidad
         }
         
-        .create-post-button-eve {
+        .crear-btn-event {
             background-color: #ffffff; // Color de fondo del botón
-            color: #007234;
-            border: 2px solid #007234;
-            padding: 5px 70px; // Padding horizontal y vertical
-            font-size: 35px; // Tamaño de la letra
-            font-family: 'Monomaniac One', sans-serif; // Asegúrate de que 'Monomaniac One' se carga correctamente
-            border-radius: 15px; // Borde redondeado
-            cursor: pointer; // Cambia el cursor a una mano cuando se pasa sobre el botón
-            transition: background-color 0.3s, color 0.3s; // Transición suave del color de fondo y de la letra
-
+            color: rgb(0, 0, 0); // Color de la letra
+            border: 2px solid transparent; // Borde transparente para mantener el tamaño constante
+            padding: 15px 70px; // Padding horizontal y vertical
+            font-size: 25px; // Tamaño de la letra adecuado
+            font-family: 'Monomaniac One', sans-serif; // Fuente estilizada
+            border-radius: 20px; // Bordes redondeados
+            cursor: pointer; // Cursor tipo mano para indicar clickeabilidad
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; // Transición suave para interacción
+        
             &:hover {
-                background-color: rgb(227, 246, 224); // Color de fondo al pasar el cursor
-                color: black; // Color de la letra al pasar el cursor
-            }
-
-            @media (max-width: 768px) {
-                font-size: 14px; // Más pequeño para dispositivos más pequeños
-                padding: 8px 15px; // Padding más pequeño para dispositivos más pequeños
+                background-color: white; // Cambio de color de fondo al pasar el ratón
+                color: #007234; // Cambio de color de texto al pasar el ratón
+                border: 2px solid #000000; // Borde verde visible en hover
             }
         }
+        
+        @media (max-width: 768px) {
+            .crear-btn-event {
+                font-size: 16px; // Tamaño de letra más pequeño en dispositivos móviles
+                padding: 8px 20px; // Menor padding en dispositivos móviles
+            }
+        }
+        
 
         .eventos-title {
             font-family: 'Monomaniac One', sans-serif; // Usa la fuente Monomaniac One
@@ -329,5 +336,57 @@ html, body {
 
         
     }
+
+    .modal-publicacion, .modal-evento {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .modal-publicacion.active-publicacion, .modal-evento.active-evento {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .modal-content-publicacion, .modal-content-evento {
+        position: relative;
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 700px;
+        max-height: 80%; /* Limita la altura máxima al 80% de la pantalla */
+        overflow-y: auto; /* Añade barra desplazadora si el contenido excede la altura */
+    }
+    
+    .close-btn-publicacion, .close-btn-evento {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: #707070;
+        font-weight: bold;
+    
+        &:hover {
+            color: #000;
+        }
+    }
+    
+    
+
+    
 
   }

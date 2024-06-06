@@ -1,43 +1,72 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PublicacionService } from '../../services/publicacion.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { PublicationComponent } from '../../components/publication/publication.component';
+import { EventComponent } from '../../components/events/events.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PublicationComponent, EventComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class  HomeComponent {
+export class  HomeComponent implements OnInit {
 
-  publicaciones = [
-    {
-      titulo: "Primera Publicación",
-      descripcion: "Esta es la descripción de la primera publicación.",
-      fecha: new Date(), 
-      hora: "10:00 AM",
-      autor: "Autor 1",
-      imagen: "/assets/Logo-1.jpg"
-    },
-    {
-      titulo: "Segunda Publicación",
-      descripcion: "Esta es la descripción de la segunda publicación.",
-      fecha: new Date(), 
-      hora: "11:00 AM",
-      autor: "Autor 2",
-      imagen: "/assets/Logo-1.jpg"
-    },
-    {
-      titulo: "Primera Publicación",
-      descripcion: "Esta es la descripción de la primera publicación.",
-      fecha: new Date(), 
-      hora: "10:00 AM",
-      autor: "Autor 1",
-      imagen: "/assets/Logo-1.jpg"
-    }
+  publicaciones:any[] = [];
+  safeUrl:any;
 
+  constructor(private publicacionesService: PublicacionService, private sanitizer: DomSanitizer, private router: Router){}
+
+  mostrarModalpublicacion: boolean = false;
+
+  abrirModalpublicacion(): void {
+    this.mostrarModalpublicacion = true;
+  }
+
+  cerrarModalpublicacion(): void {
+    this.mostrarModalpublicacion = false;
+    this.redirectUser();
     
-  ];
+  }
+
+  redirectUser() {
+
+    this.router.navigate(['/home']); 
+  }
+
+  mostrarModalevento: boolean = false;
+
+  abrirModalevento(): void {
+    this.mostrarModalevento = true;
+  }
+
+  cerrarModalevento(): void {
+    this.mostrarModalevento = false;
+  }
+
+  ngOnInit(){
+    this.publicacionesService.listarPublicaciones().subscribe(
+      (response) => {
+        this.publicaciones = response.map(publicacion => ({
+          ...publicacion,
+          imagenBase64: this.getSafeUrl(publicacion.imagen)
+          
+        }));
+      },
+      (error) => {
+        console.log(error.error)
+        
+      }
+    )
+  }
+
+  getSafeUrl(base64Image: string): SafeResourceUrl {
+    const imageBlobUrl = `data:image/jpeg;base64,${base64Image}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(imageBlobUrl);
+  }
 
   eventos = [
     {

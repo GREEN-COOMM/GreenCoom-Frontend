@@ -1,1 +1,40 @@
-<p>publication works!</p>
+<div class="publication-container">
+    <h2>NUEVA PUBLICACIÓN</h2>
+    <form [formGroup]="publicacionForm" (ngSubmit)="onSubmit()">
+        <!-- Título -->
+        <div class="input-group">
+            <label>Título:</label>
+            <input type="text" placeholder="Título" formControlName="titulo">
+            <div *ngIf="publicacionForm.get('titulo')?.errors?.['required'] && publicacionForm.get('titulo')?.touched">
+              <small>El título es obligatorio y no debe exceder los 100 caracteres.</small>
+            </div>
+        </div>
+  
+        <!-- Descripción -->
+        <div class="input-group">
+            <label>Descripción:</label>
+            <textarea placeholder="Descripción" formControlName="descripcion"></textarea>
+            <div *ngIf="publicacionForm.get('descripcion')?.errors?.['required'] && publicacionForm.get('descripcion')?.touched">
+              <small>La descripción es obligatoria y no debe exceder los 500 caracteres.</small>
+            </div>
+        </div>
+  
+        <!-- Imagen -->
+        <div class="input-group">
+          <label>Imagen:</label>
+          <input type="file" (change)="onFileSelected($event)" formControlName="imagen" accept="image/jpeg, image/png, image/gif">
+          <div *ngIf="publicacionForm.get('imagen')?.errors?.['required'] && publicacionForm.get('imagen')?.touched">
+            <small>Una imagen es obligatoria.</small>
+        </div>
+          <div *ngIf="publicacionForm.get('imagen')?.errors?.['invalidFileType']">
+            <small>Solo se permiten imágenes (JPG, JPEG, PNG, GIF).</small>
+          </div>
+          <div *ngIf="selectedImage">
+            <img [src]="selectedImage" alt="Vista previa de la imagen" class="image-preview"/>
+            <button type="button-eliminar" (click)="removeImage()">Eliminar Imagen</button>
+          </div>
+      </div>
+        <button type="submit" [disabled]="!publicacionForm.valid">Publicar</button>
+    </form>
+  </div>
+  

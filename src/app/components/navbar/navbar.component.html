@@ -5,11 +5,14 @@
         </div>
         <div class="nav-links">
             <a href="/" class="nav-link">Inicio</a>
-            <a href="#about-us" class="nav-link">Quienes Somos</a>
+            <a *ngIf="authService.isAuthenticated()" href="#challenges" class="nav-link">Desafíos</a>
+            <a *ngIf="!authService.isAuthenticated()" href="#about-us" class="nav-link">Quienes Somos</a>
+          
         </div>
-        <div class="buttons-container">
-            <button class="btn" routerLink="/auth/login">Iniciar Sesión</button>
-            <button class="btn" routerLink="/auth/register">Crear Cuenta</button>
+        <div  class="buttons-container">
+            <button *ngIf="!authService.isAuthenticated()" class="btn" routerLink="/auth/login">Iniciar Sesión</button>
+            <button *ngIf="!authService.isAuthenticated()" class="btn" routerLink="/auth/register">Crear Cuenta</button>
+            <button *ngIf="authService.isAuthenticated()" class="btn" (click)="authService.logout()">Cerrar Sesión</button>
         </div>
     </div>
 </nav>
