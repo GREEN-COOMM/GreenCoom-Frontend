@@ -9,8 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class PublicacionService {
 
-  private apiUrl1 = 'http://localhost:8001/publication/list'
-  private apiUrl2 = 'http://localhost:8001/publication/create'; // Ajusta la URL de tu API
+  private apiUrl1 = 'http://localhost:8002/publication/list'
+  private apiUrl2 = 'http://localhost:8002/publication/create'; // Ajusta la URL de tu API
 
   constructor( private http: HttpClient, private authService: AuthService) { }
 
@@ -32,7 +32,7 @@ export class PublicacionService {
     const token = localStorage.getItem('token'); // O desde donde almacenes tu token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     console.log("Hasta aca todo bien");
-    return this.http.post(this.apiUrl2, formData, { headers });
+    return this.http.post(this.apiUrl2, formData, { headers, responseType: 'text' });
   }
 
 }

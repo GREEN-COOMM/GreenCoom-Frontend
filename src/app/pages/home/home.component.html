@@ -29,7 +29,11 @@
             </div>
         </div>
         <div *ngIf="publicaciones.length === 0">
-            <p>No se encontraron publicaciones.</p>
+            <p *ngIf="authService.isAuthenticated()">No se encontraron publicaciones.</p>
+        </div>
+        <div *ngIf="!authService.isAuthenticated()">
+            <p>Inicia sesion para poder ver las publicaciones.</p>
+            <a href="/auth/login">Iniciar Sesion</a>
         </div>
         <div class="modal-publicacion" [class.active-publicacion]="mostrarModalpublicacion">
             <div class="modal-content-publicacion">
@@ -63,7 +67,11 @@
             </div>
         </div>
         <div *ngIf="eventos.length === 0">
-            <p>No se encontraron eventos.</p>
+            <p style="color: white;" *ngIf="authService.isAuthenticated()">No se encontraron eventos.</p>
+        </div>
+        <div *ngIf="!authService.isAuthenticated()">
+            <p style="color: white;">Inicia sesion para poder ver los eventos.</p>
+            <a style="color: white;" href="/auth/login">Iniciar Sesion</a>
         </div>
 
         <div class="modal-evento" [class.active-evento]="mostrarModalevento">

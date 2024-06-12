@@ -9,14 +9,14 @@ import { PLATFORM_ID } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = "http://localhost:8080/api/v1/user"
+  private apiUrl = "http://localhost:8002/api/user"
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string): Observable<any> {
     const url = `${this.apiUrl}/login`;
     return this.http.post<{token: String}>(url, { email: username, password: password }, {
-    
+      
     });
   }
 

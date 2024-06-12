@@ -59,7 +59,7 @@ export class RegisterComponent {
 
       console.log(formData)
 
-      this.http.post('http://localhost:8080/api/v1/user/create', formData, {responseType: 'text'}).subscribe(
+      this.http.post('http://localhost:8002/api/user/create', formData, {responseType: 'text'}).subscribe(
         response => {
           alert(response);
           this.router.navigate(['/auth/login'])

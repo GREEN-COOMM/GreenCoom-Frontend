@@ -5,6 +5,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PublicationComponent } from '../../components/publication/publication.component';
 import { EventComponent } from '../../components/events/events.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { EventService } from '../../services/events.service';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +18,10 @@ import { Router } from '@angular/router';
 export class  HomeComponent implements OnInit {
 
   publicaciones:any[] = [];
+  eventos: any[] = [];
   safeUrl:any;
 
-  constructor(private publicacionesService: PublicacionService, private sanitizer: DomSanitizer, private router: Router){}
+  constructor(private publicacionesService: PublicacionService, private sanitizer: DomSanitizer, private router: Router, public authService: AuthService, public eventService: EventService){}
 
   mostrarModalpublicacion: boolean = false;
 
@@ -47,7 +50,12 @@ export class  HomeComponent implements OnInit {
     this.mostrarModalevento = false;
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.loadEvents();
+    this.loadPublications();
+  }
+
+  loadPublications(){
     this.publicacionesService.listarPublicaciones().subscribe(
       (response) => {
         this.publicaciones = response.map(publicacion => ({
@@ -63,38 +71,28 @@ export class  HomeComponent implements OnInit {
     )
   }
 
+  loadEvents(){
+    this.eventService.listarEventos().subscribe(
+      (response) => {
+        this.eventos = response.map(evento => ({
+          ...evento
+          
+          
+        }));
+      },
+      (error) => {
+        console.log(error.error)
+        
+      }
+    )
+  }
+
   getSafeUrl(base64Image: string): SafeResourceUrl {
     const imageBlobUrl = `data:image/jpeg;base64,${base64Image}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(imageBlobUrl);
   }
 
-  eventos = [
-    {
-      titulo: "Conferencia sobre Cambio Climático",
-      descripcion: "Únete a nosotros para discutir los impactos del cambio climático y las estrategias para mitigarlo.",
-      fecha: new Date(), 
-      hora: "10:00 AM",
-      organizador: "Organización Ecológica",
-      imagen: "/assets/evento-clima.jpg",
-      link: "https://chat.whatsapp.com/ejemplodelink"
-    },
-    {
-      titulo: "Taller de Reciclaje Creativo",
-      descripcion: "Aprende cómo puedes reutilizar materiales reciclables para crear arte y objetos útiles.",
-      fecha: new Date(),
-      hora: "02:00 PM",
-      organizador: "Centro Cultural Verde",
-      imagen: "/assets/evento-reciclaje.jpg",
-      link: "https://chat.whatsapp.com/ejemplodelink"
-    },
-    {
-      titulo: "Marcha por la Energía Limpia",
-      descripcion: "Marchamos juntos para promover el uso de energías renovables en nuestra comunidad.",
-      fecha: new Date(), 
-      hora: "04:00 PM",
-      organizador: "Activistas por el Clima",
-      imagen: "/assets/evento-energia.jpg",
-      link: "https://chat.whatsapp.com/ejemplodelink"
-    }
-];
+  
+
+  
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { EventService } from '../../services/events.service';
 import { CommonModule } from '@angular/common';
+import { response } from 'express';
 
 @Component({
   selector: 'app-event',
@@ -25,17 +26,24 @@ export class EventComponent {
 
   onSubmit(): void {
     if (this.eventForm.valid) {
-      const formData = new FormData();
-      formData.append('titulo', this.eventForm.value.titulo);
-      formData.append('descripcion', this.eventForm.value.descripcion);
-      formData.append('fecha', this.eventForm.value.fecha);
-      formData.append('hora', this.eventForm.value.hora);
-      formData.append('link', this.eventForm.value.link);
+      const eventRequest = {
+        titulo: this.eventForm.value.titulo,
+        descripcion: this.eventForm.value.descripcion,
+        fecha: this.eventForm.value.fecha,
+        hora: this.eventForm.value.hora,
+        link: this.eventForm.value.link
+      };
+      
 
-      this.eventService.createEvent(formData).subscribe({
-        next: () => 
-          alert('Evento creado con éxito.'),
-        error: () => alert('Error al crear el evento.')
+      this.eventService.createEvent(eventRequest).subscribe({
+        next: (response) => {
+          console.log("Server Response: ", response);
+          alert("Evento creado con exito")
+        },
+        error: (error) => {
+          console.log("Server Responde: ", error);
+          alert("Error al crear el evento")
+        }
       });
     }
   }
