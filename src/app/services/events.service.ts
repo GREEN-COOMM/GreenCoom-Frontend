@@ -8,8 +8,8 @@ import { AuthService } from './auth.service';
 })
 export class EventService {
 
-  private apiUrl = 'http://localhost:8000/api/backend/event/create';
-  private apiUrl1 = 'http://localhost:8000/api/backend/event/list';
+  private apiUrl = 'http://localhost:8002/api/event/create';
+  private apiUrl1 = 'http://localhost:8002/api/event/list';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
