@@ -9,8 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class PublicacionService {
 
-  private apiUrl1 = 'http://localhost:8002/publication/list'
-  private apiUrl2 = 'http://localhost:8002/publication/create'; 
+  private apiUrl1 = 'https://api-gateway-m.onrender.com/publication/list'
+  private apiUrl2 = 'https://api-gateway-m.onrender.com/publication/create'; 
 
   constructor( private http: HttpClient, private authService: AuthService) { }
 

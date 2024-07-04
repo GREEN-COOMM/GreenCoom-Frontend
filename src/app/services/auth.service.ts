@@ -9,7 +9,7 @@ import { PLATFORM_ID } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = "http://localhost:8002/api/user"
+  private apiUrl = "https://api-gateway-m.onrender.com/api/user"
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private router: Router) { }
 
