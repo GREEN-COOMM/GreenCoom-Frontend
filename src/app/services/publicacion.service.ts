@@ -31,7 +31,7 @@ export class PublicacionService {
   createPublication(formData: FormData): Observable<any> {
     const token = localStorage.getItem('token'); // O desde donde almacenes tu token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log("Hasta aca todo bien");
+    console.log("Hasta djjdba todo bien");
     return this.http.post(this.apiUrl2, formData, { headers, responseType: 'text' });
   }
 
