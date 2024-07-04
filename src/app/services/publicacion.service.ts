@@ -9,8 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class PublicacionService {
 
-  private apiUrl1 = 'http://localhost:8002/publication/microservice/list'
-  private apiUrl2 = 'http://localhost:8002/publication/microservice/create'; // Ajusta la URL de tu API
+  private apiUrl1 = 'http://localhost:8002/publication/list'
+  private apiUrl2 = 'http://localhost:8002/publication/create'; 
 
   constructor( private http: HttpClient, private authService: AuthService) { }
 
